@@ -20,7 +20,9 @@ suite('Unit Tests', function(){
         });
         test("return an error on a double-fraction (i.e. 3/2/3)",() => {
             assert.isNaN(convertHandler.getNum("0.5/2/3km"),`input does not result in NaN`)
-
+        });
+        test("should correctly default to a numerical input of 1 when no numerical input is provided",() => {
+            assert.isTrue(convertHandler.getNum("km") === 1,"returns 1 by default if unit is provided")
         })
     })
 

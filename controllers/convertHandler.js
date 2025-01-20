@@ -10,7 +10,8 @@ function ConvertHandler() {
         const [numerator,denominator] = input.match(/(^(?:[0-9]+|\d+\.\d{0,2})\/(?:[0-9]+|\d+\.\d{0,2}))/g)[0].match(/(\d+\.\d{0,2})|([0-9]+)/g);
         result = Number(numerator) / Number(denominator);
       }
-    } else {result = parseFloat(input)}
+    } else if(Number.isNaN(parseFloat(input))) {result = 1}
+    else {result = parseFloat(input)}
     
     return result;
   };
