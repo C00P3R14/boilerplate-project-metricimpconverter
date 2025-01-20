@@ -2,13 +2,22 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     let result;
+    if(input.includes("/")) {
+      const slashNum = input.match(/(\/)/g).length;
+      if(slashNum > 1) {
+        result = NaN
+      } else {
+        const [numerator,denominator] = input.match(/(^(?:[0-9]+|\d+\.\d{0,2})\/(?:[0-9]+|\d+\.\d{0,2}))/g)[0].match(/(\d+\.\d{0,2})|([0-9]+)/g);
+        result = Number(numerator) / Number(denominator);
+      }
+    } else {result = parseFloat(input)}
     
     return result;
   };
   
   this.getUnit = function(input) {
     let result;
-    
+    result = input.match(/([a-z]+)/gi)[0]
     return result;
   };
   
