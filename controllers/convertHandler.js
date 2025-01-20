@@ -18,7 +18,10 @@ function ConvertHandler() {
   
   this.getUnit = function(input) {
     let result;
-    result = input.match(/([a-z]+)/gi)[0]
+    const unitSearch = input.match(/(km|L|mi|gal|lbs|kg)/gi);
+    if(unitSearch === null) {
+      result = "invalid unit"
+    } else {result = unitSearch[0]}
     return result;
   };
   
