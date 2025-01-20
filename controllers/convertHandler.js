@@ -5,7 +5,7 @@ function ConvertHandler() {
     if(input.includes("/")) {
       const slashNum = input.match(/(\/)/g).length;
       if(slashNum > 1) {
-        result = NaN
+        result = "invalid number"
       } else {
         const [numerator,denominator] = input.match(/(^(?:[0-9]+|\d+\.\d{0,2})\/(?:[0-9]+|\d+\.\d{0,2}))/g)[0].match(/(\d+\.\d{0,2})|([0-9]+)/g);
         result = Number(numerator) / Number(denominator);
