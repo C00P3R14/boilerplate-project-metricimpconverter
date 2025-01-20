@@ -19,7 +19,7 @@ suite('Unit Tests', function(){
             assert.isTrue(convertHandler.getNum("0.5/2km") === 0.25,"input read correct fraction with decimal number")
         });
         test("return an error on a double-fraction (i.e. 3/2/3)",() => {
-            assert.isTrue(convertHandler.getNum("0.5/2/3km") === NaN,"input does not result in NaN")
+            assert.isNaN(convertHandler.getNum("0.5/2/3km"),`input does not result in NaN`)
 
         })
     })
