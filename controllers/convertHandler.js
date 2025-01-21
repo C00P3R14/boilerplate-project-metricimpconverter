@@ -27,6 +27,7 @@ function ConvertHandler() {
   
   this.getReturnUnit = function(initUnit) {
     let result;
+    if(initUnit !== "invalid unit") {
     const returnUnit = {
       gal: "L",
       l: "gal",
@@ -36,13 +37,14 @@ function ConvertHandler() {
       mi:"km"
     }
 
-    result = returnUnit[initUnit.toLowerCase()]
+    result = returnUnit[initUnit.toLowerCase()]} else {result = "invalid unit"}
     
     return result;
   };
 
   this.spellOutUnit = function(unit) {
     let result;
+    if(unit !== "invalid unit") {
     const unitSpellouts = {
       km: "kilometers",
       kg: "kilograms",
@@ -52,7 +54,7 @@ function ConvertHandler() {
       lbs: "pounds"
     }
 
-    result = unitSpellouts[unit.toLowerCase()]
+    result = unitSpellouts[unit.toLowerCase()]} else {result = "invalid unit"}
     
     return result;
   };
@@ -70,26 +72,30 @@ function ConvertHandler() {
       kg: () => initNum / lbsToKg,
       km: () => initNum / miToKm
     }
-    
-    let result = conversion[initUnit === "l" ? initUnit.toUpperCase() : initUnit]();
+
+    let result;
+
+    if(initUnit === "invalid unit") {
+      result = "invalid unit"
+    } else {result = conversion[initUnit === "l" ? initUnit.toUpperCase() : initUnit]();}
     
     return result;
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     let result;
+    //console.log(`initNum: ${initNum} initUnit: ${initUnit} returnNum:${returnNum} returnUnit: ${returnUnit}`)
 
     if( initNum === "invalid number" && initUnit === "invalid unit") {
-      result = "invalid number and unit"
-      return
+      return result = "invalid number and unit"
     }
-    if(initNum === "invalid number") {
-      result = "invalid number"
-      return
-    }
+
     if(initUnit === "invalid unit") {
-      result = "invalid unit"
-      return
+      return result = "invalid unit"
+    }
+
+    if(initNum === "invalid number") {
+      return result = "invalid number"
     }
 
     result = {
