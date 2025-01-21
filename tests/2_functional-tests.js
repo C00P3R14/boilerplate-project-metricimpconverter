@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 suite('Functional Tests', function() {
     this.timeout(5000);
     suite("e2e Testing",() => {
-        test("Test GET /api/convert with valid input",(done) => {
+        test("Convert a valid input such as 10L: GET request to /api/convert",(done) => {
             chai.request(server)
             .keepOpen()
             .get("/api/convert?input=10L")
@@ -18,7 +18,7 @@ suite('Functional Tests', function() {
                 done()
             })
         });
-        test("Test GET /api/convert with invalid input",(done) => {
+        test("Convert an invalid input such as 32g: GET request to /api/convert",(done) => {
             chai.request(server)
             .keepOpen()
             .get("/api/convert?input=32g")
@@ -28,7 +28,7 @@ suite('Functional Tests', function() {
                 done()
             })
         });
-        test("Test GET /api/convert with invalid number input",(done) => {
+        test("Convert an invalid number such as 3/7.2/4kg: GET request to /api/convert",(done) => {
             chai.request(server)
             .keepOpen()
             .get("/api/convert?input=3/7.2/4kg")
@@ -38,7 +38,7 @@ suite('Functional Tests', function() {
                 done()
             })
         });
-        test("Test GET /api/convert with invalid number and unit input",(done) => {
+        test("Convert an invalid number AND unit such as 3/7.2/4kilomegagram: GET request to /api/convert",(done) => {
             chai.request(server)
             .keepOpen()
             .get("/api/convert?input=3/7.2/4g")
@@ -48,7 +48,7 @@ suite('Functional Tests', function() {
                 done()
             })
         });
-        test("Test GET /api/convert with no number input",(done) => {
+        test("Convert with no number such as kg: GET request to /api/convert",(done) => {
             chai.request(server)
             .keepOpen()
             .get("/api/convert?input=kg")
