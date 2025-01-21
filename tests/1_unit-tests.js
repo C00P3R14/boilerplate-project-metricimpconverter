@@ -56,7 +56,39 @@ suite('Unit Tests', function(){
                     convertHandler.getNum("2L"),
                     convertHandler.getUnit("2L")
                 ),2);
-        });
+            });
+            test("should correctly convert mi to km",() => {
+                assert.isAbove(
+                    convertHandler
+                    .convert(
+                        convertHandler.getNum("2mi"),
+                        convertHandler.getUnit("2mi")
+                    ),2);
+            });
+            test("should correctly convert km to mi",() => {
+                assert.isBelow(
+                    convertHandler
+                    .convert(
+                        convertHandler.getNum("2km"),
+                        convertHandler.getUnit("2km")
+                    ),2);
+                });
+                test("should correctly convert lbs to kg",() => {
+                    assert.isBelow(
+                        convertHandler
+                        .convert(
+                            convertHandler.getNum("2lbs"),
+                            convertHandler.getUnit("2lbs")
+                        ),1);
+                });
+                test("should correctly convert kg to lbs",() => {
+                    assert.isAbove(
+                        convertHandler
+                        .convert(
+                            convertHandler.getNum("2kg"),
+                            convertHandler.getUnit("2kg")
+                        ),1);
+                    });        
 
     })
 
