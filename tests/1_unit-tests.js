@@ -32,6 +32,33 @@ suite('Unit Tests', function(){
         });
         test("should correctly return an error for an invalid input unit",() => {
             assert.isTrue(convertHandler.getUnit("1kw") === "invalid unit")
-        })
+        });
+        test("should return the correct return unit for each valid input unit",() => {
+            assert.isTrue(convertHandler.getUnit("1km") === "km")
+        });
+        test("should correctly return the spelled-out string unit for each valid input unit.",() => {
+            assert.isTrue(convertHandler.spellOutUnit("l") === "liters")
+        });
+
+    suite("Conversion Tests",() => {
+        test("should correctly convert gal to L",() => {
+            assert.isAbove(
+                convertHandler
+                .convert(
+                    convertHandler.getNum("2gal"),
+                    convertHandler.getUnit("2gal")
+                ),2);
+        });
+        test("should correctly convert L to gal",() => {
+            assert.isBelow(
+                convertHandler
+                .convert(
+                    convertHandler.getNum("2L"),
+                    convertHandler.getUnit("2L")
+                ),2);
+        });
+
+    })
+
     })
 });
