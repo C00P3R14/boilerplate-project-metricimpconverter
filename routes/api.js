@@ -11,7 +11,7 @@ module.exports = function (app) {
   .get((req,res) => {
     //res.send(`hlleo ${req.query.input}`)
     
-    res.json(
+    res.status(200).json(
       convertHandler
       .getString(
         convertHandler.getNum(req.query.input),
